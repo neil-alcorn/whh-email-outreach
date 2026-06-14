@@ -9,6 +9,7 @@ const DEFAULTS = {
   SMTP_SECURE: 'true',
   DAILY_SEND_LIMIT: '15',
   REQUIRE_APPROVAL_BEFORE_SEND: 'true',
+  SUMMARY_RECIPIENT_EMAIL: '',
 };
 
 export function loadEnv(path = '.env') {
@@ -38,6 +39,9 @@ export function buildMailConfig(env = process.env) {
     safety: {
       dailySendLimit: numberValue(merged.DAILY_SEND_LIMIT),
       requireApprovalBeforeSend: booleanValue(merged.REQUIRE_APPROVAL_BEFORE_SEND),
+    },
+    summaries: {
+      recipientEmail: stringValue(merged.SUMMARY_RECIPIENT_EMAIL),
     },
   };
 }
@@ -70,6 +74,7 @@ export function safeConfigSummary(config) {
     imap: config.imap,
     smtp: config.smtp,
     safety: config.safety,
+    summaries: config.summaries,
   };
 }
 

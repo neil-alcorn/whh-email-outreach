@@ -30,6 +30,19 @@ test('buildMailConfig applies Cybernautic defaults and parses secure flags', () 
   });
   assert.equal(config.safety.dailySendLimit, 15);
   assert.equal(config.safety.requireApprovalBeforeSend, true);
+  assert.deepEqual(config.summaries, {
+    recipientEmail: '',
+  });
+});
+
+test('buildMailConfig reads the summary recipient email', () => {
+  const config = buildMailConfig({
+    WHH_EMAIL_ADDRESS: 'neil@welcomehomehaiti.com',
+    WHH_EMAIL_PASSWORD: 'super-secret',
+    SUMMARY_RECIPIENT_EMAIL: 'nalcorn22@gmail.com',
+  });
+
+  assert.equal(config.summaries.recipientEmail, 'nalcorn22@gmail.com');
 });
 
 test('requireConfigForSmtp reports missing fields without exposing secrets', () => {

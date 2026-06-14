@@ -15,6 +15,7 @@ Required values:
 - `SMTP_HOST`: `secure.emailsrvr.com`
 - `SMTP_PORT`: `465`
 - `SMTP_SECURE`: `true`
+- `SUMMARY_RECIPIENT_EMAIL`: summary recipient, currently `nalcorn22@gmail.com`
 
 ## Commands
 
@@ -44,6 +45,14 @@ npm run cli -- recent-inbox -- --limit 5
 4. Confirm the test message arrives in Gmail.
 5. Reply from Gmail to the WHH mailbox.
 6. Run `recent-inbox` and confirm the reply metadata appears.
+
+## Summary Recipient
+
+Use Neil's primary Gmail address for status and response summaries:
+
+```env
+SUMMARY_RECIPIENT_EMAIL=nalcorn22@gmail.com
+```
 
 ## Safety Notes
 

@@ -43,3 +43,11 @@ npm run cli -- recent-inbox -- --limit 5
 ```
 
 See `docs/EMAIL-SETUP-AND-TESTING.md` for the first send/receive test flow.
+
+## Summary Recipient
+
+Daily or manual response summaries should go to the address configured in local `.env`:
+
+```env
+SUMMARY_RECIPIENT_EMAIL=nalcorn22@gmail.com
+```
