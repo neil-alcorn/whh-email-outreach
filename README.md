@@ -29,3 +29,13 @@ Then expand with our own research and enrichment.
 ## Operating Principle
 
 No blind blasting. The system should research, personalize, queue, and track. Sending should stay limited to 15 approved outreach emails per day unless Neil explicitly changes the limit.
+
+## Current Connector Commands
+
+```powershell
+npm run cli -- check-config
+npm run cli -- send-test -- --to nalcorn22@gmail.com
+npm run cli -- recent-inbox -- --limit 5
+```
+
+See `docs/EMAIL-SETUP-AND-TESTING.md` for the first send/receive test flow.

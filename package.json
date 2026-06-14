@@ -1,0 +1,17 @@
+{
+  "name": "whh-email-outreach",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local WHH email outreach connector and workflow tools.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/cli.js && node --check src/config.js && node --check src/mail/imap.js && node --check src/mail/smtp.js",
+    "cli": "node src/cli.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "imapflow": "^1.0.179",
+    "nodemailer": "^8.0.11"
+  }
+}
