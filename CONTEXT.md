@@ -12,7 +12,10 @@ This repo depends on the WHH context repo for mission voice, campaign language, 
 - `C:\Users\nalco\GitRepos\whh-context\social-media\PLATFORM-PLAYBOOK.md`
 - `C:\Users\nalco\GitRepos\whh-context\social-media\SOCIAL-MEDIA-OPERATING-SYSTEM.md`
 - `C:\Users\nalco\GitRepos\whh-context\campaigns\2026-spring\CAMPAIGN-PLAYBOOK.md`
+- `C:\Users\nalco\GitRepos\whh-context\AI-HANDOFF-QUICK-REFERENCE.md`
 - `C:\Users\nalco\GitRepos\whh-context\storytelling\README.md`
+- `C:\Users\nalco\GitRepos\whh-context\storytelling\DOCUMENTARY-VISION.md`
+- `C:\Users\nalco\GitRepos\whh-context\imports\chatgpt-projects\2026-06-13-extended-brain-dump\README.md`
 
 ## Current Social Links
 
@@ -24,3 +27,10 @@ This repo depends on the WHH context repo for mission voice, campaign language, 
 ## Voice Notes
 
 Use warm, invitational, faith-rooted language. The ask is not pressure. The pitch should invite aligned hosts and creators to help more people encounter the story of homes, jobs, discipleship, and durable hope in Haiti.
+
+Important outreach frame:
+
+- WHH moved from `Come see Haiti` to `Let us bring Haiti to you`.
+- The goal is awareness and relationship before fundraising.
+- Prefer `We'd love to explore how we might collaborate` over `Can I be a guest?`
+- Data supports stories. Stories drive engagement.

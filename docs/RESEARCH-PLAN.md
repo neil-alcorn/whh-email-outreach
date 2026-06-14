@@ -11,6 +11,7 @@ Begin with the working podcast outreach tracker, then expand by researching simi
 - business and leadership podcasts with faith-aligned hosts
 - creators who actively post on Instagram, YouTube, LinkedIn, or Facebook
 - shows with clear guest submission forms
+- corporate and faith-and-work audiences that may care about employment, dignity, and sustainability
 
 ## Research Fields
 
@@ -34,3 +35,5 @@ Capture:
 - `3`: possible fit, needs better angle
 - `2`: weak fit, deprioritize
 - `1`: not a fit or no public contact path
+
+The best targets are not always the largest. Prioritize mission alignment, audience alignment, and relationship friendliness over audience size alone.

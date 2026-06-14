@@ -4,6 +4,8 @@
 
 Increase exposure for Welcome Home Haiti by earning podcast interviews, media mentions, newsletter placements, social follows, social shares, and warm introductions.
 
+This is awareness and relationship work before it is fundraising work.
+
 ## Success Metrics
 
 - 15 personalized outreach emails queued or sent per active outreach day
@@ -30,6 +32,9 @@ Increase exposure for Welcome Home Haiti by earning podcast interviews, media me
 - Peterson-style transformation through mentorship, work, faith, and home ownership
 - Northern Haiti hope story without making crisis the whole story
 - Donors and partners as participants in real stories, not as helpers of an organization
+- The shift from `Come see Haiti` to `Let us bring Haiti to you`
+- Employment as dignity, sustainability, and ministry
+- Faith and work integration for business and leadership audiences
 
 ## Win Definition
 

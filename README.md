@@ -6,6 +6,8 @@ Local outreach workspace for Welcome Home Haiti podcast, blogger, and media outr
 
 Use carefully researched, personalized email outreach to increase WHH exposure. A successful outcome can be a podcast interview, article mention, social follow, social share, referral, or warm relationship. New followers on WHH social channels are a win.
 
+The outreach posture is awareness and relationship first, not immediate fundraising.
+
 ## Scope
 
 This repo is for the email outreach engine and operating system only. It should not become the full WHH knowledge base and should not store raw contact lists or mailbox credentials in Git.
@@ -29,6 +31,8 @@ Then expand with our own research and enrichment.
 ## Operating Principle
 
 No blind blasting. The system should research, personalize, queue, and track. Sending should stay limited to 15 approved outreach emails per day unless Neil explicitly changes the limit.
+
+Start from `docs/ENGAGEMENT-MESSAGING-PRINCIPLES.md` before drafting or sending outreach.
 
 ## Current Connector Commands
 
