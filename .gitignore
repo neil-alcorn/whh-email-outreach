@@ -1,0 +1,30 @@
+﻿# Secrets and local credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Local sensitive data
+/data/ignored/
+/logs/
+*.sqlite
+*.sqlite3
+*.db
+*.csv
+*.xlsx
+*.xls
+
+# Mailbox/cache exports
+*.eml
+*.mbox
+mail-cache/
+outbox/
+inbox-cache/
+
+# OS/editor
+Thumbs.db
+.DS_Store
+~$*
+*.tmp
+*.bak
