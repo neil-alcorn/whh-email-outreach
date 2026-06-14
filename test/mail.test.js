@@ -60,4 +60,5 @@ test('buildImapClientOptions maps config into imapflow options', () => {
     user: 'neil@welcomehomehaiti.com',
     pass: 'super-secret',
   });
+  assert.equal(options.logger, false);
 });

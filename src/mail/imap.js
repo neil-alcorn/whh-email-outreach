@@ -13,6 +13,7 @@ export function buildImapClientOptions(config) {
       user: config.email.address,
       pass: config.email.password,
     },
+    logger: false,
   };
 }
 
