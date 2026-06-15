@@ -58,3 +58,42 @@ test('recent-inbox prints message metadata without body content', async () => {
   assert.match(result.output, /Podcast reply/);
   assert.match(result.output, /host@example.com/);
 });
+
+test('import-workbook writes a local database summary without printing contacts', async () => {
+  const writes = [];
+  const reads = [];
+  const result = await runCommand([
+    'import-workbook',
+    '--input',
+    'source.xlsx',
+    '--out',
+    'data/ignored/outreach-contacts.json',
+    '--python',
+    'python-with-openpyxl',
+  ], {
+    env,
+    readWorkbookSheets: async (input, options) => {
+      reads.push({ input, options });
+      return [
+        {
+          name: 'Sheet1',
+          rows: [
+            { sourceRow: 2, values: { Email: 'private@example.com', 'Podcast/Platform Name': 'Private Show' } },
+          ],
+        },
+      ];
+    },
+    writeJsonFile: async (path, data) => writes.push({ path, data }),
+  });
+
+  assert.equal(result.exitCode, 0);
+  assert.deepEqual(reads[0], {
+    input: 'source.xlsx',
+    options: { pythonCommand: 'python-with-openpyxl' },
+  });
+  assert.equal(writes[0].path, 'data/ignored/outreach-contacts.json');
+  assert.equal(writes[0].data.metadata.totalContacts, 1);
+  assert.match(result.output, /Imported 1 contacts/);
+  assert.doesNotMatch(result.output, /private@example.com/);
+  assert.doesNotMatch(result.output, /Private Show/);
+});

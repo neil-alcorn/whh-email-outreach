@@ -1,4 +1,9 @@
 import { buildMailConfig, loadEnv, safeConfigSummary } from './config.js';
+import {
+  buildOutreachDatabase,
+  readWorkbookSheets as defaultReadWorkbookSheets,
+  writeJsonFile as defaultWriteJsonFile,
+} from './data/importer.js';
 import { fetchRecentMessageSummaries as defaultFetchRecentMessageSummaries } from './mail/imap.js';
 import { sendTestEmail as defaultSendTestEmail } from './mail/smtp.js';
 
@@ -9,6 +14,8 @@ export async function runCommand(argv, deps = {}) {
   const config = buildMailConfig(env);
   const sendTestEmail = deps.sendTestEmail || defaultSendTestEmail;
   const fetchRecentMessageSummaries = deps.fetchRecentMessageSummaries || defaultFetchRecentMessageSummaries;
+  const readWorkbookSheets = deps.readWorkbookSheets || defaultReadWorkbookSheets;
+  const writeJsonFile = deps.writeJsonFile || defaultWriteJsonFile;
 
   try {
     if (!command || command === 'help' || command === '--help' || command === '-h') {
@@ -36,6 +43,24 @@ export async function runCommand(argv, deps = {}) {
       return ok(`${summaries.map(formatSummary).join('\n')}\n`);
     }
 
+    if (command === 'import-workbook') {
+      const input = optionValue(args, '--input');
+      const outputPath = optionValue(args, '--out') || 'data/ignored/outreach-contacts.json';
+      const pythonCommand = optionValue(args, '--python') || env.WORKBOOK_IMPORT_PYTHON;
+      if (!input) {
+        return fail('Usage: npm run cli -- import-workbook -- --input path/to/source.xlsx [--out data/ignored/outreach-contacts.json] [--python path/to/python]');
+      }
+
+      const sheets = await readWorkbookSheets(input, { pythonCommand });
+      const database = buildOutreachDatabase({ sourceFile: input, sheets });
+      await writeJsonFile(outputPath, database);
+      return ok([
+        `Imported ${database.metadata.totalContacts} contacts to ${outputPath}.`,
+        `Skipped ${database.metadata.skippedDuplicates} duplicate email records.`,
+        '',
+      ].join('\n'));
+    }
+
     return fail(`Unknown command: ${command}\n\n${helpText()}`);
   } catch (error) {
     return fail(error.message || String(error));
@@ -50,11 +75,13 @@ export function helpText() {
     '  check-config                    Show masked local email configuration',
     '  send-test --to <email>          Send one SMTP test email',
     '  recent-inbox [--limit <count>]  Show recent inbox metadata only',
+    '  import-workbook --input <xlsx>  Import outreach contacts into local ignored JSON',
     '',
     'Examples:',
     '  npm run cli -- check-config',
     '  npm run cli -- send-test -- --to nalcorn22@gmail.com',
     '  npm run cli -- recent-inbox -- --limit 5',
+    '  npm run cli -- import-workbook -- --input C:\\path\\to\\WHH_Podcast_Outreach_Tracking.xlsx',
     '',
   ].join('\n');
 }

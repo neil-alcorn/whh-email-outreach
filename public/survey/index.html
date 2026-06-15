@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Help Shape WHH Updates</title>
+    <meta
+      name="description"
+      content="Share 90 seconds of feedback to help Welcome Home Haiti tell the story of safe homes, steady work, discipleship, and community care."
+    />
+    <link rel="stylesheet" href="/survey/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro-panel" aria-labelledby="survey-title">
+        <div class="brand-bar">
+          <a class="brand-mark" href="https://welcomehomehaiti.com/" rel="noreferrer">Welcome Home Haiti</a>
+          <div class="social-links" aria-label="Welcome Home Haiti social links">
+            <a href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">YouTube</a>
+            <a href="https://www.facebook.com/WelcomeHomeHaiti/" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/welcome_home_haiti/" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <p class="eyebrow">New home. New hope. New Haiti.</p>
+            <h1 id="survey-title">Help shape the stories we share next.</h1>
+            <p class="lede">
+              You have been part of the Welcome Home Haiti story. We would value your thoughts on what helps you feel connected to the families, workers, and leaders in Haiti.
+            </p>
+            <div class="pillars" aria-label="Welcome Home Haiti ministry pillars">
+              <span>Employment</span>
+              <span>House Building</span>
+              <span>Discipleship</span>
+            </div>
+          </div>
+
+          <div class="video-frame" aria-label="Welcome Home Haiti video">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=UUWfmWU2N-1J_U4S4R2gOHjA"
+              title="Welcome Home Haiti YouTube channel"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <form id="survey-form" class="survey-form" novalidate>
+        <input type="hidden" name="segment" id="segment" value="unknown" />
+        <input type="hidden" name="source" id="source" value="survey" />
+
+        <section class="question-block" aria-labelledby="q-work">
+          <div class="question-header">
+            <span class="step">1</span>
+            <h2 id="q-work">What parts of WHH's work would you most like to hear more about?</h2>
+            <p>Choose up to two.</p>
+          </div>
+          <div class="choice-grid" data-limit="2">
+            <label><input type="checkbox" name="interests" value="safe_homes" /> Safe homes for families</label>
+            <label><input type="checkbox" name="interests" value="jobs_dignity" /> Jobs and dignity for Haitian workers</label>
+            <label><input type="checkbox" name="interests" value="discipleship" /> Discipleship and spiritual growth</label>
+            <label><input type="checkbox" name="interests" value="family_worker_stories" /> Stories from families and workers</label>
+            <label><input type="checkbox" name="interests" value="community_needs" /> Community needs in Haiti</label>
+            <label><input type="checkbox" name="interests" value="gift_impact" /> How gifts are used and reported</label>
+            <label><input type="checkbox" name="interests" value="pray_share" /> Ways to pray or share</label>
+          </div>
+        </section>
+
+        <section class="question-block" aria-labelledby="q-updates">
+          <div class="question-header">
+            <span class="step">2</span>
+            <h2 id="q-updates">What kind of updates would help you feel most connected?</h2>
+            <p>Choose up to two.</p>
+          </div>
+          <div class="choice-grid" data-limit="2">
+            <label><input type="checkbox" name="updatePreferences" value="youtube_videos" /> Short YouTube videos</label>
+            <label><input type="checkbox" name="updatePreferences" value="photos_captions" /> Photos with short captions</label>
+            <label><input type="checkbox" name="updatePreferences" value="email_stories" /> Email stories</label>
+            <label><input type="checkbox" name="updatePreferences" value="founder_notes" /> Founder notes from Steve or Shelley</label>
+            <label><input type="checkbox" name="updatePreferences" value="impact_numbers" /> Simple impact numbers</label>
+            <label><input type="checkbox" name="updatePreferences" value="prayer_requests" /> Prayer requests</label>
+            <label><input type="checkbox" name="updatePreferences" value="behind_scenes" /> Behind-the-scenes updates</label>
+          </div>
+        </section>
+
+        <section class="question-block" aria-labelledby="q-follow">
+          <div class="question-header">
+            <span class="step">3</span>
+            <h2 id="q-follow">Where are you most likely to follow or share WHH updates?</h2>
+          </div>
+          <div class="choice-grid">
+            <label><input type="checkbox" name="followLocations" value="youtube" /> YouTube</label>
+            <label><input type="checkbox" name="followLocations" value="facebook" /> Facebook</label>
+            <label><input type="checkbox" name="followLocations" value="instagram" /> Instagram</label>
+            <label><input type="checkbox" name="followLocations" value="email" /> Email</label>
+            <label><input type="checkbox" name="followLocations" value="text" /> Text</label>
+            <label><input type="checkbox" name="followLocations" value="not_sure" /> Not sure yet</label>
+          </div>
+        </section>
+
+        <section class="question-block" aria-labelledby="q-frequency">
+          <div class="question-header">
+            <span class="step">4</span>
+            <h2 id="q-frequency">How often would you prefer updates?</h2>
+          </div>
+          <div class="radio-row">
+            <label><input type="radio" name="frequency" value="monthly" /> Monthly</label>
+            <label><input type="radio" name="frequency" value="quarterly" /> Quarterly</label>
+            <label><input type="radio" name="frequency" value="campaigns" /> During major campaigns</label>
+            <label><input type="radio" name="frequency" value="few_times_year" /> A few times per year</label>
+          </div>
+        </section>
+
+        <section class="question-block text-block" aria-labelledby="q-explain">
+          <div class="question-header">
+            <span class="step">5</span>
+            <h2 id="q-explain">What would you like WHH to explain or show better?</h2>
+          </div>
+          <textarea name="explainBetter" rows="4" maxlength="1200"></textarea>
+        </section>
+
+        <section class="question-block text-block" aria-labelledby="q-note">
+          <div class="question-header">
+            <span class="step">6</span>
+            <h2 id="q-note">Is there anything you would like Neil, Steve, Shelley, or the WHH team to know?</h2>
+          </div>
+          <textarea name="teamNote" rows="4" maxlength="1200"></textarea>
+        </section>
+
+        <section class="question-block" aria-labelledby="q-contact">
+          <div class="question-header">
+            <span class="step">7</span>
+            <h2 id="q-contact">Would you like someone to follow up?</h2>
+          </div>
+          <div class="radio-row">
+            <label><input type="radio" name="followUp" value="none" checked /> No, just sharing feedback</label>
+            <label><input type="radio" name="followUp" value="email" /> Yes, by email</label>
+            <label><input type="radio" name="followUp" value="phone" /> Yes, by phone</label>
+          </div>
+
+          <div class="contact-grid">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="160" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" maxlength="160" />
+            </label>
+            <label>
+              <span>Phone</span>
+              <input type="tel" name="phone" autocomplete="tel" maxlength="80" />
+            </label>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <p id="form-message" role="status" aria-live="polite"></p>
+          <button type="submit">Send Feedback</button>
+        </div>
+      </form>
+
+      <section id="thanks" class="thanks-panel" hidden>
+        <h2>Thank you for helping WHH tell the story well.</h2>
+        <p>Your feedback helps us share clearer updates about safe homes, steady work, discipleship, and community care in Haiti.</p>
+        <div class="thanks-actions">
+          <a href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">Visit YouTube</a>
+          <a href="https://www.facebook.com/WelcomeHomeHaiti/" rel="noreferrer">Follow on Facebook</a>
+          <a href="https://www.instagram.com/welcome_home_haiti/" rel="noreferrer">Follow on Instagram</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/survey/survey.js" type="module"></script>
+  </body>
+</html>

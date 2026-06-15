@@ -17,6 +17,8 @@ Required values:
 - `SMTP_SECURE`: `true`
 - `SUMMARY_RECIPIENT_EMAIL`: summary recipient, currently `nalcorn22@gmail.com`
 
+The WHH mailbox is the source of truth for outreach sending and reply monitoring. Gmail is only used as a summary recipient and as a controlled test address when verifying the connector.
+
 ## Commands
 
 Show masked config:
@@ -41,14 +43,14 @@ npm run cli -- recent-inbox -- --limit 5
 
 1. Confirm `.env` has the WHH mailbox address and password.
 2. Run `check-config` and confirm the email address is correct and the password is masked.
-3. Run `send-test` to Neil's Gmail.
+3. Run `send-test` from the WHH mailbox to Neil's Gmail.
 4. Confirm the test message arrives in Gmail.
 5. Reply from Gmail to the WHH mailbox.
 6. Run `recent-inbox` and confirm the reply metadata appears.
 
 ## Summary Recipient
 
-Use Neil's primary Gmail address for status and response summaries:
+Use Neil's primary Gmail address for status and response summaries only:
 
 ```env
 SUMMARY_RECIPIENT_EMAIL=nalcorn22@gmail.com
@@ -59,4 +61,5 @@ SUMMARY_RECIPIENT_EMAIL=nalcorn22@gmail.com
 - The test email command sends only one message to the requested recipient.
 - The inbox command prints metadata only: UID, date, from, subject, and flags.
 - Message bodies are not printed by default.
+- Operational outreach sends from the WHH mailbox and replies are monitored in the WHH mailbox.
 - Outreach batch sending is not implemented yet.
