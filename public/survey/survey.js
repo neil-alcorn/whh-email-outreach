@@ -107,7 +107,7 @@ function validatePayload(payload) {
   const errors = [];
   if (!payload.interests.length) errors.push('Choose at least one WHH work area.');
   if (!payload.updatePreferences.length) errors.push('Choose at least one update type.');
-  if (!payload.followLocations.length) errors.push('Choose where you are most likely to follow WHH.');
+  if (!payload.followLocations.length) errors.push('Choose how you prefer to hear about WHH.');
   if (!payload.frequency) errors.push('Choose an update frequency.');
   if (payload.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email.trim())) {
     errors.push('Enter a valid email address or leave it blank.');

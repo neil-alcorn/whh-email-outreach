@@ -7,8 +7,8 @@ test('validateSurveyPayload accepts a focused donor feedback response', () => {
   const result = validateSurveyPayload({
     interests: ['safe_homes', 'jobs_dignity'],
     updatePreferences: ['youtube_videos', 'founder_notes'],
-    followLocations: ['youtube', 'email'],
-    frequency: 'quarterly',
+    followLocations: ['youtube', 'email', 'mail', 'phone'],
+    frequency: 'annually',
     explainBetter: 'How families are doing after they move in.',
     teamNote: 'Thank you for the updates.',
     followUp: 'email',
@@ -21,7 +21,7 @@ test('validateSurveyPayload accepts a focused donor feedback response', () => {
   assert.equal(result.valid, true);
   assert.deepEqual(result.errors, []);
   assert.deepEqual(result.value.interests, ['safe_homes', 'jobs_dignity']);
-  assert.equal(result.value.frequency, 'quarterly');
+  assert.equal(result.value.frequency, 'annually');
   assert.equal(result.value.segment, 'LYBUNT');
 });
 

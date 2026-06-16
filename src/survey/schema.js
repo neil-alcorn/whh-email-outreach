@@ -18,8 +18,8 @@ const UPDATE_PREFERENCES = new Set([
   'behind_scenes',
 ]);
 
-const FOLLOW_LOCATIONS = new Set(['youtube', 'facebook', 'instagram', 'email', 'text', 'not_sure']);
-const FREQUENCIES = new Set(['monthly', 'quarterly', 'campaigns', 'few_times_year']);
+const FOLLOW_LOCATIONS = new Set(['youtube', 'facebook', 'instagram', 'email', 'mail', 'phone', 'text', 'not_sure']);
+const FREQUENCIES = new Set(['monthly', 'quarterly', 'annually', 'campaigns', 'few_times_year']);
 const FOLLOW_UPS = new Set(['none', 'email', 'phone']);
 const SEGMENTS = new Set(['LYBUNT', 'SYBUNT', 'current_donor', 'past_donor', 'board', 'friend', 'unknown']);
 
