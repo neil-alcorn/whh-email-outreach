@@ -31,3 +31,6 @@ Thumbs.db
 ~$*
 *.tmp
 *.bak
+
+# Local Netlify folder
+.netlify

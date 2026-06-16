@@ -28,17 +28,7 @@ form.addEventListener('submit', async (event) => {
   }
 
   try {
-    const response = await fetch('/.netlify/functions/survey-submit', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const result = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error((result.errors || result.error || ['Unable to save feedback.']).join(' '));
-    }
-
+    await submitFeedback(payload);
     form.hidden = true;
     thanks.hidden = false;
     thanks.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -47,6 +37,19 @@ form.addEventListener('submit', async (event) => {
     setMessage(error.message || 'Unable to save feedback right now.', true);
   }
 });
+
+async function submitFeedback(payload) {
+  const response = await fetch('/.netlify/functions/survey-submit', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const result = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error((result.errors || result.error || ['Unable to save feedback.']).join(' '));
+  }
+}
 
 function collectPayload(formData) {
   return {

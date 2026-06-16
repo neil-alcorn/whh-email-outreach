@@ -2,8 +2,17 @@ import { neon } from '@neondatabase/serverless';
 
 import { buildSurveyRecord, validateSurveyPayload } from '../../src/survey/schema.js';
 
-const databaseUrl = process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
+const databaseUrl = resolveDatabaseUrl();
 const sql = databaseUrl ? neon(databaseUrl) : null;
+
+function resolveDatabaseUrl() {
+  const explicitUrl =
+    process.env.NETLIFY_DB_URL ||
+    process.env.NETLIFY_DATABASE_URL ||
+    process.env.DATABASE_URL ||
+    process.env.NEON_DATABASE_URL;
+  return explicitUrl || '';
+}
 
 export async function handler(event) {
   if (event.httpMethod === 'OPTIONS') return response(204, '');

@@ -8,13 +8,15 @@
       name="description"
       content="Share 90 seconds of feedback to help Welcome Home Haiti tell the story of safe homes, steady work, discipleship, and community care."
     />
-    <link rel="stylesheet" href="/survey/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="page-shell">
       <section class="intro-panel" aria-labelledby="survey-title">
         <div class="brand-bar">
-          <a class="brand-mark" href="https://welcomehomehaiti.com/" rel="noreferrer">Welcome Home Haiti</a>
+          <a class="brand-mark" href="https://welcomehomehaiti.com/" rel="noreferrer">
+            <img src="whh-logo.png" alt="Welcome Home Haiti" />
+          </a>
           <div class="social-links" aria-label="Welcome Home Haiti social links">
             <a href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">YouTube</a>
             <a href="https://www.facebook.com/WelcomeHomeHaiti/" rel="noreferrer">Facebook</a>
@@ -44,6 +46,9 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+            <a class="video-fallback" href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">
+              Watch WHH videos on YouTube
+            </a>
           </div>
         </div>
       </section>
@@ -125,7 +130,7 @@
         <section class="question-block text-block" aria-labelledby="q-note">
           <div class="question-header">
             <span class="step">6</span>
-            <h2 id="q-note">Is there anything you would like Neil, Steve, Shelley, or the WHH team to know?</h2>
+            <h2 id="q-note">Is there anything you would like the WHH team to know?</h2>
           </div>
           <textarea name="teamNote" rows="4" maxlength="1200"></textarea>
         </section>
@@ -174,6 +179,6 @@
       </section>
     </main>
 
-    <script src="/survey/survey.js" type="module"></script>
+    <script src="survey.js" type="module"></script>
   </body>
 </html>

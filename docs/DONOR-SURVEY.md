@@ -1,6 +1,6 @@
 # Donor Feedback Survey
 
-The donor feedback survey is a Netlify-ready static page with a Neon-backed serverless submit endpoint.
+The donor feedback survey is a Netlify-ready static page with a Postgres-backed serverless submit endpoint.
 
 ## Local Files
 
@@ -19,11 +19,14 @@ Netlify:
 
 Database env var, in priority order:
 
-1. `NETLIFY_DATABASE_URL`
-2. `DATABASE_URL`
-3. `NEON_DATABASE_URL`
+1. `NETLIFY_DB_URL`
+2. `NETLIFY_DATABASE_URL`
+3. `DATABASE_URL`
+4. `NEON_DATABASE_URL`
 
 The function creates the `whh_survey_responses` table automatically on first successful submit.
+
+Current deployment note: the survey page is live, but Netlify Database did not expose a production runtime connection string to the function. Before sending real donor traffic, set one of the env vars above to a Neon/Postgres connection string, then redeploy and run a smoke-test submission.
 
 ## Response Table
 
@@ -58,6 +61,26 @@ Use low-sensitivity tags only:
 ```
 
 Do not put gift amounts, household names, Salesforce IDs, donor scores, or private notes in URLs.
+
+## Reporting
+
+Once the database env var is set, response data is available from `whh_survey_responses`.
+
+Useful starter query:
+
+```sql
+select
+  created_at,
+  segment,
+  source,
+  interests,
+  update_preferences,
+  follow_locations,
+  frequency,
+  follow_up
+from whh_survey_responses
+order by created_at desc;
+```
 
 ## Content Posture
 

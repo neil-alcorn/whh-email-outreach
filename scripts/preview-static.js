@@ -4,6 +4,7 @@ import path from 'node:path';
 
 const root = path.resolve('public');
 const port = Number.parseInt(process.env.PORT || '4173', 10);
+const host = process.env.HOST || '127.0.0.1';
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -34,6 +35,6 @@ http
       response.end(data);
     });
   })
-  .listen(port, '127.0.0.1', () => {
-    console.log(`Static preview: http://127.0.0.1:${port}/survey/`);
+  .listen(port, host, () => {
+    console.log(`Static preview: http://${host}:${port}/survey/`);
   });

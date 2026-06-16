@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Local WHH email outreach connector and workflow tools.",
   "scripts": {
+    "build": "npm run check",
     "test": "node --test",
     "check": "node --check src/cli.js && node --check src/config.js && node --check src/data/importer.js && node --check src/mail/imap.js && node --check src/mail/smtp.js && node --check src/survey/schema.js && node --check netlify/functions/survey-submit.js && node --check scripts/preview-static.js",
     "preview:survey": "node scripts/preview-static.js",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
+    "@netlify/database": "^1.0.0",
     "dotenv": "^16.4.7",
     "imapflow": "^1.0.179",
     "nodemailer": "^8.0.11"
