@@ -39,16 +39,51 @@ form.addEventListener('submit', async (event) => {
 });
 
 async function submitFeedback(payload) {
-  const response = await fetch('/.netlify/functions/survey-submit', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const result = await response.json().catch(() => ({}));
+  try {
+    const response = await fetch('/.netlify/functions/survey-submit', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json().catch(() => ({}));
 
-  if (!response.ok) {
-    throw new Error((result.errors || result.error || ['Unable to save feedback.']).join(' '));
+    if (!response.ok) {
+      throw new Error(getErrorMessage(result));
+    }
+  } catch (error) {
+    await submitNetlifyForm(payload);
   }
+}
+
+async function submitNetlifyForm(payload) {
+  const body = new URLSearchParams();
+  body.set('form-name', 'whh-donor-feedback');
+  body.set('segment', payload.segment);
+  body.set('source', payload.source);
+  body.set('interests', payload.interests.join(', '));
+  body.set('updatePreferences', payload.updatePreferences.join(', '));
+  body.set('followLocations', payload.followLocations.join(', '));
+  body.set('frequency', payload.frequency);
+  body.set('explainBetter', payload.explainBetter);
+  body.set('teamNote', payload.teamNote);
+  body.set('followUp', payload.followUp);
+  body.set('name', payload.name);
+  body.set('email', payload.email);
+  body.set('phone', payload.phone);
+
+  const response = await fetch('/', {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  if (!response.ok) throw new Error('Unable to save feedback right now.');
+}
+
+function getErrorMessage(result) {
+  if (Array.isArray(result.errors)) return result.errors.join(' ');
+  if (Array.isArray(result.error)) return result.error.join(' ');
+  if (typeof result.error === 'string') return result.error;
+  return 'Unable to save feedback.';
 }
 
 function collectPayload(formData) {

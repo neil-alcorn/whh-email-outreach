@@ -26,7 +26,7 @@ Database env var, in priority order:
 
 The function creates the `whh_survey_responses` table automatically on first successful submit.
 
-Current deployment note: the survey page is live, but Netlify Database did not expose a production runtime connection string to the function. Before sending real donor traffic, set one of the env vars above to a Neon/Postgres connection string, then redeploy and run a smoke-test submission.
+Current deployment note: Netlify Forms is enabled as the live capture fallback. If the SQL function cannot find a database URL, the browser posts the same validated response to the `whh-donor-feedback` Netlify form so responses are still exportable. Before moving to SQL reporting, set one of the env vars above to a Neon/Postgres connection string, redeploy, and run a smoke-test submission.
 
 ## Response Table
 
@@ -54,17 +54,19 @@ Table: `whh_survey_responses`
 Use low-sensitivity tags only:
 
 ```text
-/survey/?segment=LYBUNT&source=email
-/survey/?segment=SYBUNT&source=email
-/survey/?segment=current_donor&source=email
-/survey/?segment=past_donor&source=email
+https://whh-donor-feedback.netlify.app/?segment=LYBUNT&source=email
+https://whh-donor-feedback.netlify.app/?segment=SYBUNT&source=email
+https://whh-donor-feedback.netlify.app/?segment=current_donor&source=email
+https://whh-donor-feedback.netlify.app/?segment=past_donor&source=email
 ```
 
 Do not put gift amounts, household names, Salesforce IDs, donor scores, or private notes in URLs.
 
 ## Reporting
 
-Once the database env var is set, response data is available from `whh_survey_responses`.
+Current response data is available in Netlify Forms under `whh-donor-feedback`.
+
+Once the database env var is set, SQL response data is available from `whh_survey_responses`.
 
 Useful starter query:
 

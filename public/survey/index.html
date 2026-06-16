@@ -8,7 +8,9 @@
       name="description"
       content="Share 90 seconds of feedback to help Welcome Home Haiti tell the story of safe homes, steady work, discipleship, and community care."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="/survey/whh-logo.png" />
+    <link rel="apple-touch-icon" href="/survey/whh-logo.png" />
+    <link rel="stylesheet" href="/survey/styles.css" />
   </head>
   <body>
     <main class="page-shell">
@@ -38,22 +40,17 @@
             </div>
           </div>
 
-          <div class="video-frame" aria-label="Welcome Home Haiti video">
-            <iframe
-              src="https://www.youtube.com/embed/videoseries?list=UUWfmWU2N-1J_U4S4R2gOHjA"
-              title="Welcome Home Haiti YouTube channel"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-            <a class="video-fallback" href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">
-              Watch WHH videos on YouTube
+          <div class="video-frame" aria-label="Welcome Home Haiti YouTube channel">
+            <a class="video-card" href="https://www.youtube.com/@WelcomeHomeHaiti" rel="noreferrer">
+              <span class="play-mark" aria-hidden="true"></span>
+              <span>Watch WHH stories on YouTube</span>
             </a>
           </div>
         </div>
       </section>
 
-      <form id="survey-form" class="survey-form" novalidate>
+      <form id="survey-form" class="survey-form" name="whh-donor-feedback" method="POST" data-netlify="true" novalidate>
+        <input type="hidden" name="form-name" value="whh-donor-feedback" />
         <input type="hidden" name="segment" id="segment" value="unknown" />
         <input type="hidden" name="source" id="source" value="survey" />
 
@@ -179,6 +176,6 @@
       </section>
     </main>
 
-    <script src="survey.js" type="module"></script>
+    <script src="/survey/survey.js" type="module"></script>
   </body>
 </html>

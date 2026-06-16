@@ -55,13 +55,13 @@ Deploy with Netlify using:
 
 - Publish directory: `public`
 - Functions directory: `netlify/functions`
-- Neon/Postgres env var: `NETLIFY_DATABASE_URL`, `DATABASE_URL`, or `NEON_DATABASE_URL`
+- Neon/Postgres env var: `NETLIFY_DB_URL`, `NETLIFY_DATABASE_URL`, `DATABASE_URL`, or `NEON_DATABASE_URL`
 
 Example tagged links:
 
 ```text
-/survey/?segment=LYBUNT&source=email
-/survey/?segment=SYBUNT&source=email
+https://whh-donor-feedback.netlify.app/?segment=LYBUNT&source=email
+https://whh-donor-feedback.netlify.app/?segment=SYBUNT&source=email
 ```
 
 See `docs/DONOR-SURVEY.md` for the response schema and privacy notes.

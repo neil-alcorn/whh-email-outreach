@@ -3,6 +3,11 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/"
+  to = "/survey/"
+  status = 200
+
+[[redirects]]
   from = "/survey"
   to = "/survey/"
   status = 301
