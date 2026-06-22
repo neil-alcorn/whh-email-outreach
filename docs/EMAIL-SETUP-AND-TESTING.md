@@ -19,6 +19,18 @@ Required values:
 
 The WHH mailbox is the source of truth for outreach sending and reply monitoring. Gmail is only used as a summary recipient and as a controlled test address when verifying the connector.
 
+## Cybernautic Support
+
+- Support portal: `http://support.cybernautic.com`
+- Support email: `support@cybernautic.com`
+- Primary support contact: Missy Freese, `clientservices@cybernautic.net`
+- Webmail: `https://webmail.emailsrvr.com/`
+- Email setup help: `https://help.emailsrvr.com`
+
+If SMTP returns `535 5.7.8 Error: authentication failed`, stop outreach sends and contact Cybernautic support to check for a mailbox lock, password reset, or app-password requirement.
+
+June 2026 lockout note: Cybernautic confirmed that the WHH mailbox can be locked when donor outreach looks like automated/bulk sending from a standard mailbox. The normal mailbox password remains the SMTP/IMAP password; there is no separate app password. Do not resume batch sending until the account is confirmed unlocked and the send plan has been reduced or moved to an email service provider.
+
 ## Commands
 
 Show masked config:

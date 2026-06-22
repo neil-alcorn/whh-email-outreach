@@ -5,7 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $expectedSiteId = "8fea8a59-a1b7-43fa-b644-7fd8c230c720"
-$expectedSiteUrl = "https://whh-email-outreach-survey.netlify.app/survey/"
+$expectedSiteUrl = "https://whh-donor-feedback.netlify.app/survey/"
 $expectedTitle = "Help Shape WHH Updates"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $indexPath = Join-Path $repoRoot "public\survey\index.html"

@@ -1,4 +1,4 @@
-﻿# WHH Email Outreach
+# WHH Email Outreach
 
 Local outreach workspace for Welcome Home Haiti podcast, blogger, and media outreach.
 
@@ -30,9 +30,11 @@ Then expand with our own research and enrichment.
 
 ## Operating Principle
 
-No blind blasting. The system should research, personalize, queue, and track. Sending should stay limited to 15 approved outreach emails per day unless Neil explicitly changes the limit.
+No blind blasting. The system should research, personalize, queue, and track. Sending should stay limited to 15 approved outreach emails per day unless Neil explicitly changes the limit after reviewing deliverability risk.
 
 All outreach sending and reply monitoring must use the configured WHH mailbox over SMTP/IMAP. Neil's Gmail address is only a summary/test recipient; it is not the operational outreach mailbox.
+
+June 2026 deliverability lesson: Cybernautic confirmed the WHH mailbox was likely locked because a rapid donor batch looked like automated/bulk sending from a standard Rackspace mailbox. The published Rackspace daily recipient limit is not a safe campaign target because automated email can be restricted at much lower, unpublished thresholds. Larger campaigns should use an email service provider or a support-approved plan.
 
 Start from `docs/ENGAGEMENT-MESSAGING-PRINCIPLES.md` before drafting or sending outreach.
 
@@ -43,9 +45,31 @@ npm run cli -- check-config
 npm run cli -- send-test -- --to nalcorn22@gmail.com
 npm run cli -- recent-inbox -- --limit 5
 npm run cli -- import-workbook -- --input C:\Users\nalco\GitRepos\whh-context\social-media\sensitive-source-docs\WHH_Podcast_Outreach_Tracking.xlsx --out data\ignored\outreach-contacts.json --python <path-to-python-with-openpyxl>
+npm run cli -- queue-email -- --to donor@example.com --segment LYBUNT --template lybunt-reconnect-v1 --subject "A quick WHH update"
+npm run cli -- outreach-summary
+npm run cli -- export-board-metrics -- --survey-responses 0
 ```
 
 See `docs/EMAIL-SETUP-AND-TESTING.md` for the first send/receive test flow.
+
+## Outreach Tracking
+
+Tracked donor emails are queued locally in `data/ignored/email-outreach-log.json`. This file is intentionally ignored by Git because it can contain donor names and addresses.
+
+Use `queue-email` before sending any real donor message. It records the recipient, segment, template, campaign links, queued time, and status without sending anything. Test messages should use `--test` so they are excluded from board metrics.
+
+Use `outreach-summary` to review safe counts by status, segment, template, and campaign. Use `export-board-metrics` to write `data/ignored/board-email-metrics.json` with these fields for the board dashboard:
+
+```json
+{
+  "sent": 0,
+  "replies": 0,
+  "reply_rate": 0,
+  "survey_responses": 0
+}
+```
+
+`reply_rate` is stored as a decimal, so `0.25` means 25%.
 
 ## Donor Feedback Survey
 

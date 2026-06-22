@@ -1,4 +1,4 @@
-﻿# Email Connector Design
+# Email Connector Design
 
 ## Purpose
 
@@ -16,6 +16,18 @@ From Cybernautic support:
 - SMTP SSL: `true`
 - Username: full WHH email address
 - Password: mailbox password or app password if available
+
+## Cybernautic Support
+
+- Support portal: `http://support.cybernautic.com`
+- Support email: `support@cybernautic.com`
+- Primary support contact: Missy Freese, `clientservices@cybernautic.net`
+- Webmail: `https://webmail.emailsrvr.com/`
+- Email setup help: `https://help.emailsrvr.com`
+
+If the WHH mailbox is locked, webmail fails, or SMTP returns `535 5.7.8 Error: authentication failed`, pause automated SMTP attempts and contact Cybernautic support for an unlock, password reset, or app-password guidance.
+
+June 2026 lockout note: Cybernautic confirmed that a WHH SMTP lockout was likely caused by donor-batch velocity and an unusual spike from a standard mailbox. Rackspace's published hosted-email limit is not a safe outreach target because automated email is restricted at lower, unpublished thresholds. Keep live WHH-mailbox sending slow and person-to-person; use an email service provider or support-approved plan for larger batches.
 
 ## Capabilities
 

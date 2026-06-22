@@ -59,3 +59,23 @@ export async function fetchRecentMessageSummaries({ config, limit = 5, client = 
     await client.logout();
   }
 }
+
+export async function appendSentMessage({
+  config,
+  rawMessage,
+  folder = 'INBOX.Sent',
+  client = buildImapClient(config),
+  internalDate = new Date(),
+}) {
+  requireConfigForImap(config);
+  if (!rawMessage) {
+    throw new Error('Raw sent message content is required');
+  }
+
+  await client.connect();
+  try {
+    return await client.append(folder, rawMessage, ['\\Seen'], internalDate);
+  } finally {
+    await client.logout();
+  }
+}
