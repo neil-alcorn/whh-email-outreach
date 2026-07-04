@@ -34,3 +34,8 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Codex sandbox containment (T8, 2026-07-04)
+.tmp*/
+tmp/
+tests/.tmp/
