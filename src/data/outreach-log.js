@@ -96,6 +96,56 @@ export async function updateOutreachRecord({ logPath = DEFAULT_OUTREACH_LOG_PATH
   return log.records[index];
 }
 
+export function recordBounceSuppression({
+  log,
+  recipientEmail,
+  recipientName = '',
+  mailbox,
+  uid,
+  bouncedAt = new Date().toISOString(),
+  campaign = '2026-banquet-guest-invitation',
+  subject = 'You Make Home Possible — Join Us November 14',
+}) {
+  const email = String(recipientEmail || '').trim().toLowerCase();
+  if (!email) throw new Error('recipientEmail is required');
+  if (!mailbox) throw new Error('mailbox is required');
+  if (!Number.isInteger(Number(uid)) || Number(uid) < 1) throw new Error('uid is required');
+  log.records ??= [];
+
+  const matches = log.records.filter(
+    (record) => String(record.recipient_email || '').trim().toLowerCase() === email,
+  );
+  let target = matches.at(-1);
+  const created = !target;
+  if (!target) {
+    target = {
+      send_id: `bounce-${String(mailbox).replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}-${uid}`,
+      created_at: bouncedAt,
+      sent_at: null,
+      recipient_email: email,
+      recipient_name: recipientName,
+      campaign,
+      subject,
+      status: 'bounced',
+      bounced_at: bouncedAt,
+      bounce_uid: Number(uid),
+      notes: `Bounce detected in ${mailbox} INBOX uid ${uid} on ${bouncedAt}.`,
+      test: false,
+    };
+    log.records.push(target);
+    return { created, changed: true, record: target };
+  }
+
+  const changed = target.status !== 'bounced' || target.bounce_uid !== Number(uid);
+  target.status = 'bounced';
+  target.bounced_at ??= bouncedAt;
+  target.bounce_uid = Number(uid);
+  if (!String(target.notes || '').includes(`uid ${uid}`)) {
+    target.notes = `${target.notes || ''} Bounce detected in ${mailbox} INBOX uid ${uid} on ${bouncedAt}.`.trim();
+  }
+  return { created, changed, record: target };
+}
+
 export async function summarizeOutreachLog(logPath = DEFAULT_OUTREACH_LOG_PATH) {
   const log = await readOutreachLog(logPath);
   const summary = {

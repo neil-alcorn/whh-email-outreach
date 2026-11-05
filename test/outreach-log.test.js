@@ -155,3 +155,35 @@ test('exportBoardMetrics excludes tests and calculates reply rate', async () => 
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test('recordBounceSuppression creates a suppression for a campaign-only recipient', async () => {
+  const module = await import('../src/data/outreach-log.js');
+  assert.equal(typeof module.recordBounceSuppression, 'function');
+
+  const log = { metadata: { schema_version: 1 }, records: [] };
+  const result = module.recordBounceSuppression({
+    log,
+    recipientEmail: 'campaign-only@example.com',
+    recipientName: 'Campaign Only',
+    mailbox: 'neil@welcomehomehaiti.com',
+    uid: 123,
+    bouncedAt: '2026-10-08T15:00:00.000Z',
+  });
+
+  assert.equal(result.created, true);
+  assert.equal(log.records.length, 1);
+  assert.deepEqual(log.records[0], {
+    send_id: 'bounce-neil-welcomehomehaiti-com-123',
+    created_at: '2026-10-08T15:00:00.000Z',
+    sent_at: null,
+    recipient_email: 'campaign-only@example.com',
+    recipient_name: 'Campaign Only',
+    campaign: '2026-banquet-guest-invitation',
+    subject: 'You Make Home Possible — Join Us November 14',
+    status: 'bounced',
+    bounced_at: '2026-10-08T15:00:00.000Z',
+    bounce_uid: 123,
+    notes: 'Bounce detected in neil@welcomehomehaiti.com INBOX uid 123 on 2026-10-08T15:00:00.000Z.',
+    test: false,
+  });
+});

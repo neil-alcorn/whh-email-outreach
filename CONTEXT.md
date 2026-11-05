@@ -31,6 +31,12 @@ These local notes consolidate Richard Clark's March-June 2026 recommendations, S
 - YouTube: `https://www.youtube.com/@WelcomeHomeHaiti`
 - LinkedIn: `https://www.linkedin.com/company/welcome-home-haiti/`
 
+## Website Form Pattern
+
+- Current Cybernautic website contact-form notifications arrive from `cms@cybernautic.com` with subject `A new form submission has been received.`
+- The real submitter name, email, phone, message, source page, timestamp, IP address, and user agent are embedded in the email body, not the sender header.
+- If WHH takes over the domain or replaces the site, preserve this operational flow or replace it with an equivalent form-to-inbox/CRM path so donor requests are not missed.
+
 ## Voice Notes
 
 Use warm, invitational, faith-rooted language. The ask is not pressure. The pitch should invite aligned hosts and creators to help more people encounter the story of homes, jobs, discipleship, and durable hope in Haiti.
